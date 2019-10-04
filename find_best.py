@@ -18,6 +18,8 @@ def main():
     # Print out best characters
     print(best_male + ' ' + best_female + ' They fight crime!')
 
+    return 0
+
 
 if __name__ == '__main__':
     main()

@@ -17,6 +17,8 @@ def read_file(fname, start):
             line = line[0:line.find("She's")]
         elif start == "She's" and line.find("They") >= 0:
             line = line[0:line.find("They")]
+        if line[-1] != '.':
+            line += '.'
         result.append(line + '\n')
 
     return result
@@ -33,6 +35,8 @@ def main():
                 m.writelines(read_file(os.getcwd() + '\\data\\' + fname, "He's"))
     m.close()
     f.close()
+
+    return 0
 
 
 if __name__ == '__main__':
