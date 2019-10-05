@@ -1,0 +1,10 @@
+globe-trotting: 17
+impetuous: 16
+time-travelling: 15
+small-town: 14
+bloodthirsty: 14
+drug-addicted: 13
+scarfaced: 13
+jaded: 13
+fiendish: 13
+brilliant: 13
