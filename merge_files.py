@@ -12,12 +12,12 @@ def read_file(fname, start):
     for line in lines:
         if line == '' or line.find(start) == -1:
             continue
-        line = line[line.find(start):]  # Some files had numbers beginning at each line
+        line = line[line.find(start):].strip()  # Some files had numbers beginning at each line
         if start == "He's" and line.find("She's") >= 0:
             line = line[0:line.find("She's")]
         elif start == "She's" and line.find("They") >= 0:
             line = line[0:line.find("They")]
-        if line[-1] != '.':
+        if line[-1] != '.' and line[-2] != '.':
             line += '.'
         result.append(line + '\n')
 
@@ -26,13 +26,13 @@ def read_file(fname, start):
 
 def main():
     # First import all data and write to a master file
-    with open("male_all.txt", "w+") as m, open("female_all.txt", "w+") as f:
+    with open("output\\male_all.txt", "w+") as m, open("output\\female_all.txt", "w+") as f:
         for fname in os.listdir(os.getcwd() + '\\data'):
             # Since male/he are within the words female/she, check for a female file otherwise default to male file
             if fname.lower().find("female") >= 0 or fname.lower().find("she") >= 0:
-                f.writelines(read_file(os.getcwd() + '\\data\\' + fname, "She's"))
+                f.writelines(read_file('data\\' + fname, "She's"))
             else:
-                m.writelines(read_file(os.getcwd() + '\\data\\' + fname, "He's"))
+                m.writelines(read_file('data\\' + fname, "He's"))
     m.close()
     f.close()
 
