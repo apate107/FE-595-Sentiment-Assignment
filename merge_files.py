@@ -32,7 +32,8 @@ def main():
     with open("output\\male_all.txt", "w+") as m, open("output\\female_all.txt", "w+") as f:
         for fname in os.listdir(os.getcwd() + '\\data'):
             # Since male/he are within the words female/she, check for a female file otherwise default to male file
-            if fname.lower().find("female") >= 0 or fname.lower().find("she") >= 0 or fname.lower().find("her") >= 0:
+            if (fname.lower().find("female") >= 0 or fname.lower().find("she") >= 0 or fname.lower().find("her") >= 0)\
+                    and "Male" not in fname:
                 f.writelines(read_file('data\\' + fname, "She's"))
             else:
                 m.writelines(read_file('data\\' + fname, "He's"))
