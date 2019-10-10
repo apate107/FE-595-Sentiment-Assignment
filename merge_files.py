@@ -5,6 +5,8 @@ def read_file(fname, start):
     lines = []
     with open(fname, "r") as f:
         lines = f.read().splitlines()
+        if ".csv" in fname:
+            lines = [start + " " + x.split(",")[1] for x in lines[1:]]
     f.close()
 
     # Format and do a couple of checks on the lines because there are some lines that include the next sentence in it
